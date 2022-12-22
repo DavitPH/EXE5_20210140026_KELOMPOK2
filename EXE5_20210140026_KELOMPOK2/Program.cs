@@ -32,6 +32,27 @@ namespace CircularQueues_CSharp
             }
             queue_array[hartono] = element;
         }
-   
+        public void remove()
+        {
+            if (davit == -1)
+            {
+                Console.WriteLine("Queue underflow\n");
+                return;
+            }
+            Console.WriteLine("\nThe element deleted from the queue is: " + queue_array[davit] + "\n");
+            if (davit == hartono)
+            {
+                davit = -1;
+                hartono = -1;
+            }
+            else
+            {
+                if (davit == max - 1)
+                    davit = 0;
+                else
+                    davit = davit + 1;
+            }
+        }
+        
     }
 }
