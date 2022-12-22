@@ -14,11 +14,11 @@ namespace EXE5
     }
     class queue
     {
-        Node Renita, Widiastuti;
+        Node davit, hartono;
         public queue()
         {
-            Renita = null;
-            Widiastuti = null;
+            davit = null;
+            hartono = null;
         }
         public void insert()
         {
@@ -28,35 +28,35 @@ namespace EXE5
             k2 = Console.ReadLine();
             newnode.name = k2;
             newnode.next = null;
-            if (Renita == null)
+            if (davit == null)
             {
-                Renita = newnode;
-                Widiastuti = newnode;
+                davit = newnode;
+                hartono = newnode;
                 return;
             }
-            Renita = newnode;
-            Widiastuti = newnode;
+            davit = newnode;
+            hartono = newnode;
         }
         public void delete()
         {
-            if (Renita == null)
+            if (davit == null)
             {
                 Console.WriteLine("Queue is Empty!!!");
                 return;
             }
-            Renita = Renita.next;
-            if (Renita == null)
-                Widiastuti = null;
+            davit = davit.next;
+            if (davit == null)
+                hartono = null;
         }
         public void display()
         {
-            if (Renita == null)
+            if (davit == null)
             {
                 Console.WriteLine("Queue is Empty or Filled !!!");
                 return;
             }
             Node display;
-            for (display = Renita; display != null; display = display.next)
+            for (display = davit; display != null; display = display.next)
                 Console.WriteLine(display.name);
         }
     }
