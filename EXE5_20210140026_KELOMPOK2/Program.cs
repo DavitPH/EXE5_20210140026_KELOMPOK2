@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace EXE5
+namespace EXE5_20210140026_KELOMPOK2
 {
     class Node
     {
