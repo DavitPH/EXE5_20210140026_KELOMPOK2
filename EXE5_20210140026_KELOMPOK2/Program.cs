@@ -1,96 +1,70 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Web;
 
-namespace CircularQueues_CSharp
+namespace EXE5
 {
-    class Queues
+    class Node
     {
-        int davit, hartono, max = 5;
-        int[] queue_array = new int[5];
-        public Queues()
+        public string name;
+        public Node next;
+    }
+    class queue
+    {
+        Node Renita, Widiastuti;
+        public queue()
         {
-            davit = -1;
-            hartono = -1;
+            Renita = null;
+            Widiastuti = null;
         }
-        public void insert(int element)
+        public void insert()
         {
-            if ((davit == 0 && hartono == max - 1) || (davit == hartono + 1))
+            string k2;
+            Node newnode = new Node();
+            Console.WriteLine("Masukan Element: ");
+            k2 = Console.ReadLine();
+            newnode.name = k2;
+            newnode.next = null;
+            if (Renita == null)
             {
-                Console.WriteLine("\nQueue overflow\n");
+                Renita = newnode;
+                Widiastuti = newnode;
                 return;
             }
-            if (davit == -1)
-            {
-                davit = 0;
-                hartono = 0;
-            }
-            else
-            {
-                if (hartono == max - 1)
-                    hartono = 0;
-                else
-                    hartono = hartono + 1;
-            }
-            queue_array[hartono] = element;
+            Renita = newnode;
+            Widiastuti = newnode;
         }
-        public void remove()
+        public void delete()
         {
-            if (davit == -1)
+            if (Renita == null)
             {
-                Console.WriteLine("Queue underflow\n");
+                Console.WriteLine("Queue is Empty!!!");
                 return;
             }
-            Console.WriteLine("\nThe element deleted from the queue is: " + queue_array[davit] + "\n");
-            if (davit == hartono)
-            {
-                davit = -1;
-                hartono = -1;
-            }
-            else
-            {
-                if (davit == max - 1)
-                    davit = 0;
-                else
-                    davit = davit + 1;
-            }
+            Renita = Renita.next;
+            if (Renita == null)
+                Widiastuti = null;
         }
         public void display()
         {
-            int FRONT_position =davit;
-            int REAR_position = hartono;
-            if (davit == -1)
+            if (Renita == null)
             {
-                Console.WriteLine("Queue is empty\n");
+                Console.WriteLine("Queue is Empty or Filled !!!");
                 return;
             }
-            Console.WriteLine("\nElements in the queue are ..................\n");
-            if (FRONT_position <= REAR_position)
-            {
-                while (FRONT_position <= REAR_position)
-                {
-                    Console.Write(queue_array[FRONT_position] + "      ");
-                    FRONT_position++;
-                }
-                Console.WriteLine();
-            }
-            else
-            {
-                while (FRONT_position <= max - 1)
-                {
-                    Console.WriteLine(queue_array[FRONT_position] + "   ");
-                    FRONT_position++;
-                }
-                FRONT_position = 0;
-                while (FRONT_position <= REAR_position)
-                {
-                    Console.Write(queue_array[FRONT_position] + "  ");
-                    FRONT_position++;
-                }
-                Console.WriteLine();
-            }
+            Node display;
+            for (display = Renita; display != null; display = display.next)
+                Console.WriteLine(display.name);
         }
+    }
+    class Program
+    {
         static void Main(string[] args)
         {
-            Queues q = new Queues();
+            queue q = new queue();
             char ch;
             while (true)
             {
@@ -101,41 +75,30 @@ namespace CircularQueues_CSharp
                     Console.WriteLine("2. Implement delete operation");
                     Console.WriteLine("3. Display values");
                     Console.WriteLine("4. Exit");
-                    Console.WriteLine("\nEnter your choice (1-4): ");
+                    Console.Write("\nEnter your choice: ");
                     ch = Convert.ToChar(Console.ReadLine());
                     Console.WriteLine();
                     switch (ch)
                     {
                         case '1':
-                            {
-                                Console.Write("Enter a number: ");
-                                int num = Convert.ToInt32(System.Console.ReadLine());
-                                Console.WriteLine();
-                                q.insert(num);
-                            }
+                            q.insert();
                             break;
                         case '2':
-                            {
-                                q.remove();
-                            }
+                            q.delete();
                             break;
                         case '3':
-                            {
-                                q.display();
-                            }
+                            q.display();
                             break;
                         case '4':
                             return;
                         default:
-                            {
-                                Console.WriteLine("Invalid option!!");
-                            }
+                            Console.WriteLine("Invalid Option");
                             break;
                     }
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine("Check for the values entered.");
+                    Console.WriteLine("Check for the values entered");
                 }
             }
         }
