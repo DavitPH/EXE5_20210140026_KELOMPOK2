@@ -1,15 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace EXE5_20210140026_KELOMPOK2
+namespace CircularQueues_CSharp
 {
-    class Program
+    class Queues
     {
-        static void Main(string[] args)
+        int davit, hartono, max = 5;
+        int[] queue_array = new int[5];
+        public Queues()
         {
+            davit = -1;
+            hartono = -1;
         }
+       
     }
 }
